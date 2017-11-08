@@ -1,5 +1,71 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/white-logos/emc.png</file>
+        <file>resources/white-logos/icn.png</file>
+        <file>resources/white-logos/dgd.png</file>
+        <file>resources/white-logos/ppt  .png</file>
+        <file>resources/white-logos/gbyte  .png</file>
+        <file>resources/white-logos/pivx  .png</file>
+        <file>resources/white-logos/zec.png</file>
+        <file>resources/white-logos/ltc.png</file>
+        <file>resources/white-logos/dash.png</file>
+        <file>resources/white-logos/usdt.png</file>
+        <file>resources/white-logos/doge.png</file>
+        <file>resources/white-logos/nxt.png</file>
+        <file>resources/white-logos/neo.png</file>
+        <file>resources/white-logos/bnb  .png</file>
+        <file>resources/white-logos/bcn.png</file>
+        <file>resources/white-logos/pot.png</file>
+        <file>resources/white-logos/lkk.png</file>
+        <file>resources/white-logos/sc.png</file>
+        <file>resources/white-logos/xmr.png</file>
+        <file>resources/white-logos/bat  .png</file>
+        <file>resources/white-logos/xrp.png</file>
+        <file>resources/white-logos/lsk  .png</file>
+        <file>resources/white-logos/xcp.png</file>
+        <file>resources/white-logos/salt  .png</file>
+        <file>resources/white-logos/ppc.png</file>
+        <file>resources/white-logos/maid.png</file>
+        <file>resources/white-logos/nlg.png</file>
+        <file>resources/white-logos/bcc  .png</file>
+        <file>resources/white-logos/dgb.png</file>
+        <file>resources/white-logos/waves.png</file>
+        <file>resources/white-logos/hsr  .png</file>
+        <file>resources/white-logos/ardr.png</file>
+        <file>resources/white-logos/dcr.png</file>
+        <file>resources/white-logos/xtz.png</file>
+        <file>resources/white-logos/gnt.png</file>
+        <file>resources/white-logos/vtc.png</file>
+        <file>resources/white-logos/bts.png</file>
+        <file>resources/white-logos/knc  .png</file>
+        <file>resources/white-logos/mona  .png</file>
+        <file>resources/white-logos/kmd.png</file>
+        <file>resources/white-logos/xem.png</file>
+        <file>resources/white-logos/ark  .png</file>
+        <file>resources/white-logos/sngls.png</file>
+        <file>resources/white-logos/xlm.png</file>
+        <file>resources/white-logos/btcd  .png</file>
+        <file>resources/white-logos/game.png</file>
+        <file>resources/white-logos/btc.png</file>
+        <file>resources/white-logos/bch.png</file>
+        <file>resources/white-logos/nmc.png</file>
+        <file>resources/white-logos/eth.png</file>
+        <file>resources/white-logos/mln.png</file>
+        <file>resources/white-logos/etc.png</file>
+        <file>resources/white-logos/0x  .png</file>
+        <file>resources/white-logos/pay  .png</file>
+        <file>resources/white-logos/omg  .png</file>
+        <file>resources/white-logos/ant.png</file>
+        <file>resources/white-logos/steem.png</file>
+        <file>resources/white-logos/amp.png</file>
+        <file>resources/white-logos/ada  .png</file>
+        <file>resources/white-logos/trx  .png</file>
+        <file>resources/white-logos/gno.png</file>
+        <file>resources/white-logos/strat.png</file>
+        <file>resources/white-logos/rep.png</file>
+        <file>resources/white-logos/eos  .png</file>
+        <file>resources/white-logos/miota  .png</file>
+        <file>resources/white-logos/fct.png</file>
+        <file>resources/white-logos/qtum  .png</file>
     </qresource>
 </RCC>
