@@ -32,3 +32,6 @@ HEADERS += \
 
 FORMS += \
         cryptoview.ui
+
+RESOURCES += \
+    resources.qrc
