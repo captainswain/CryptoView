@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>602</width>
-    <height>609</height>
+    <width>582</width>
+    <height>602</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,12 +28,17 @@ background: qlineargradient(spread:pad, x1:0, y1:0.25, x2:1, y2:0.858, stop:0 rg
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">.QGroupBox {
+     <string notr="true">#crytoBox_1 {
 	background:rgba(0,0,0,0.1);
     border-width: 1px;
     border-style: solid;
 	border-color: rgba(255,255,255,0.5);
- }</string>
+	border-radius: 5px
+ }
+#cryptoBox_1:hover {
+	background:rgba(0,0,0,0.8);
+ }
+</string>
     </property>
     <property name="title">
      <string/>
@@ -64,7 +69,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0.25, x2:1, y2:0.858, stop:0 rg
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;EMC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;BTC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -83,7 +88,7 @@ p, li { white-space: pre-wrap; }
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources.qrc">:/resources/white-logos/emc.png</pixmap>
+      <pixmap resource="resources.qrc">:/resources/white-logos/btc.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -105,15 +110,15 @@ p, li { white-space: pre-wrap; }
       <string notr="true">background: rbga(0,0,0,0)</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;$2600&lt;span style=&quot;color: #EA5455
-&quot;&gt; - 3.6 &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;$7288.99&lt;span style=&quot;color: #EA5455
+&quot;&gt; -1.31%	 &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
    <widget class="QGroupBox" name="crytoBox_2">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>300</x>
       <y>50</y>
       <width>231</width>
       <height>241</height>
@@ -125,6 +130,7 @@ p, li { white-space: pre-wrap; }
     border-width: 1px;
     border-style: solid;
 	border-color: rgba(255,255,255,0.5);
+	border-radius: 5px
  }</string>
     </property>
     <property name="title">
@@ -156,7 +162,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;EMC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;ETH&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -175,7 +181,7 @@ p, li { white-space: pre-wrap; }
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources.qrc">:/resources/white-logos/emc.png</pixmap>
+      <pixmap resource="resources.qrc">:/resources/white-logos/eth.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -197,8 +203,8 @@ p, li { white-space: pre-wrap; }
       <string notr="true">background: rbga(0,0,0,0)</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;$2600&lt;span style=&quot;color: #EA5455
-&quot;&gt; - 3.6 &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;$320.28&lt;span style=&quot;color: #45BF55
+&quot;&gt; +3.09 % &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -217,6 +223,7 @@ p, li { white-space: pre-wrap; }
     border-width: 1px;
     border-style: solid;
 	border-color: rgba(255,255,255,0.5);
+	border-radius: 5px
  }</string>
     </property>
     <property name="title">
@@ -248,7 +255,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;EMC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;BCH&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_6">
@@ -267,7 +274,7 @@ p, li { white-space: pre-wrap; }
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources.qrc">:/resources/white-logos/emc.png</pixmap>
+      <pixmap resource="resources.qrc">:/resources/white-logos/bch.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -289,15 +296,15 @@ p, li { white-space: pre-wrap; }
       <string notr="true">background: rbga(0,0,0,0)</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;$2600&lt;span style=&quot;color: #EA5455
-&quot;&gt; - 3.6 &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;$675.02 &lt;span style=&quot;color: #45BF55;
+&quot;&gt;+6.48%&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
    <widget class="QGroupBox" name="crytoBox_4">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>300</x>
       <y>310</y>
       <width>231</width>
       <height>241</height>
@@ -309,6 +316,7 @@ p, li { white-space: pre-wrap; }
     border-width: 1px;
     border-style: solid;
 	border-color: rgba(255,255,255,0.5);
+	border-radius: 5px
  }</string>
     </property>
     <property name="title">
@@ -340,7 +348,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;EMC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;XRP&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_8">
@@ -359,7 +367,7 @@ p, li { white-space: pre-wrap; }
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources.qrc">:/resources/white-logos/emc.png</pixmap>
+      <pixmap resource="resources.qrc">:/resources/white-logos/xrp.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -382,9 +390,40 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;$2600&lt;span style=&quot;color: #EA5455
-&quot;&gt; - 3.6 &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&quot;&gt; -0.34%&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="addCurrency">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>560</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#addCurrency{
+background:rgba(0,0,0,0);
+border-width: 1px;
+border-style: solid;
+border-color: rgba(255,255,255,0.5);
+color: white;
+border-radius: 5px
+}
+#addCurrency:hover{
+background:rgba(255,255,255,0.2);
+border-width: 1px;
+border-style: solid;
+border-color: rgba(255,255,255,0.5);
+color: white;
+border-radius: 5px
+}</string>
+    </property>
+    <property name="text">
+     <string>ADD PURCHASE</string>
+    </property>
    </widget>
   </widget>
  </widget>
