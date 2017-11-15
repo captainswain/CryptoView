@@ -394,7 +394,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="addCurrency">
+   <widget class="QPushButton" name="addCurrencyBtn">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -404,7 +404,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">#addCurrency{
+     <string notr="true">#addCurrencyBtn{
 background:rgba(0,0,0,0);
 border-width: 1px;
 border-style: solid;
@@ -412,7 +412,7 @@ border-color: rgba(255,255,255,0.5);
 color: white;
 border-radius: 5px
 }
-#addCurrency:hover{
+#addCurrencyBtn:hover{
 background:rgba(255,255,255,0.2);
 border-width: 1px;
 border-style: solid;

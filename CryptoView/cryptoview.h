@@ -13,7 +13,12 @@ class CryptoView : public QMainWindow
 
 public:
     explicit CryptoView(QWidget *parent = 0);
+    void updatelabel(QString str){
+    void LoadValues();
     ~CryptoView();
+
+private slots:
+    void on_addCurrencyBtn_clicked();
 
 private:
     Ui::CryptoView *ui;
