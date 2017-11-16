@@ -2,6 +2,7 @@
 #define COIN_H
 
 #include <QWidget>
+#include <QString>
 
 class coin : public QWidget
 {
@@ -10,18 +11,18 @@ public:
     explicit coin(QWidget *parent = nullptr);
 
     coin();
-    coin(string, string, string, int, float, float, float,
+    coin(QString, QString, QString, int, float, float, float,
          float, float, float, float, float, float, float, int);
 
 
-    string getId() const;
-    void setId(const string &value);
+    QString getId() const;
+    void setId(const QString &value);
 
-    string getName() const;
-    void setName(const string &value);
+    QString getName() const;
+    void setName(const QString &value);
 
-    string getSymbol() const;
-    void setSymbol(const string &value);
+    QString getSymbol() const;
+    void setSymbol(const QString &value);
 
     int getRank() const;
     void setRank(int value);
@@ -45,7 +46,7 @@ public:
     void setTotal_supply(float value);
 
     float getMax_supply() const;
-    void setMax_supply(const flaot &value);
+    void setMax_supply(const float &value);
 
     float getPercent_change_1h() const;
     void setPercent_change_1h(float value);
@@ -60,9 +61,9 @@ public:
     void setLast_updated(int value);
 
 protected:
-    string id;
-    string name;
-    string symbol;
+    QString id;
+    QString name;
+    QString symbol;
     int rank;
     float price_usd;
     float price_btc;

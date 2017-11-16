@@ -2,36 +2,35 @@
 
 coin::coin(QWidget *parent) : QWidget(parent)
 {
-    public:
 
 }
 
-string coin::getId() const
+QString coin::getId() const
 {
     return id;
 }
 
-void coin::setId(const string &value)
+void coin::setId(const QString &value)
 {
     id = value;
 }
 
-string coin::getName() const
+QString coin::getName() const
 {
     return name;
 }
 
-void coin::setName(const string &value)
+void coin::setName(const QString &value)
 {
     name = value;
 }
 
-string coin::getSymbol() const
+QString coin::getSymbol() const
 {
     return symbol;
 }
 
-void coin::setSymbol(const string &value)
+void coin::setSymbol(const QString &value)
 {
     symbol = value;
 }
@@ -106,12 +105,12 @@ void coin::setTotal_supply(float value)
     total_supply = value;
 }
 
-flaot coin::getMax_supply() const
+float coin::getMax_supply() const
 {
     return max_supply;
 }
 
-void coin::setMax_supply(const flaot &value)
+void coin::setMax_supply(const float &value)
 {
     max_supply = value;
 }
@@ -144,11 +143,6 @@ float coin::getPercent_change_7d() const
 void coin::setPercent_change_7d(float value)
 {
     percent_change_7d = value;
-}
-
-int coin::getLast_updated() const
-{
-    return last_updated;
 }
 
 void coin::setLast_updated(int value)
