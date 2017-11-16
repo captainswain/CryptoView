@@ -2,6 +2,8 @@
 #define CRYPTOVIEW_H
 
 #include <QMainWindow>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
 
 namespace Ui {
 class CryptoView;
@@ -13,15 +15,17 @@ class CryptoView : public QMainWindow
 
 public:
     explicit CryptoView(QWidget *parent = 0);
-    void updatelabel(QString str){
+    void updatelabel(QString str);
     void LoadValues();
     ~CryptoView();
 
 private slots:
     void on_addCurrencyBtn_clicked();
+    void requestFinished(QNetworkReply *);
 
 private:
     Ui::CryptoView *ui;
+    QNetworkAccessManager *qnam;
 };
 
 #endif // CRYPTOVIEW_H
