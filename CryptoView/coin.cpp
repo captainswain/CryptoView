@@ -2,5 +2,161 @@
 
 coin::coin(QWidget *parent) : QWidget(parent)
 {
+    public:
 
+}
+
+string coin::getId() const
+{
+    return id;
+}
+
+void coin::setId(const string &value)
+{
+    id = value;
+}
+
+string coin::getName() const
+{
+    return name;
+}
+
+void coin::setName(const string &value)
+{
+    name = value;
+}
+
+string coin::getSymbol() const
+{
+    return symbol;
+}
+
+void coin::setSymbol(const string &value)
+{
+    symbol = value;
+}
+
+int coin::getRank() const
+{
+    return rank;
+}
+
+void coin::setRank(int value)
+{
+    rank = value;
+}
+
+float coin::getPrice_usd() const
+{
+    return price_usd;
+}
+
+void coin::setPrice_usd(float value)
+{
+    price_usd = value;
+}
+
+float coin::getPrice_btc() const
+{
+    return price_btc;
+}
+
+void coin::setPrice_btc(float value)
+{
+    price_btc = value;
+}
+
+float coin::getTwentyfour_hour_volume_usd() const
+{
+    return twentyfour_hour_volume_usd;
+}
+
+void coin::setTwentyfour_hour_volume_usd(float value)
+{
+    twentyfour_hour_volume_usd = value;
+}
+
+float coin::getMarket_cap_usd() const
+{
+    return market_cap_usd;
+}
+
+void coin::setMarket_cap_usd(float value)
+{
+    market_cap_usd = value;
+}
+
+float coin::getAvailable_supply() const
+{
+    return available_supply;
+}
+
+void coin::setAvailable_supply(float value)
+{
+    available_supply = value;
+}
+
+float coin::getTotal_supply() const
+{
+    return total_supply;
+}
+
+void coin::setTotal_supply(float value)
+{
+    total_supply = value;
+}
+
+flaot coin::getMax_supply() const
+{
+    return max_supply;
+}
+
+void coin::setMax_supply(const flaot &value)
+{
+    max_supply = value;
+}
+
+float coin::getPercent_change_1h() const
+{
+    return percent_change_1h;
+}
+
+void coin::setPercent_change_1h(float value)
+{
+    percent_change_1h = value;
+}
+
+float coin::getPercent_change_24h() const
+{
+    return percent_change_24h;
+}
+
+void coin::setPercent_change_24h(float value)
+{
+    percent_change_24h = value;
+}
+
+float coin::getPercent_change_7d() const
+{
+    return percent_change_7d;
+}
+
+void coin::setPercent_change_7d(float value)
+{
+    percent_change_7d = value;
+}
+
+int coin::getLast_updated() const
+{
+    return last_updated;
+}
+
+void coin::setLast_updated(int value)
+{
+    last_updated = value;
+}
+
+int coin::getLast_updated() const
+{
+    return last_updated;
 }
