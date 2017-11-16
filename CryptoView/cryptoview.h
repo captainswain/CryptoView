@@ -13,7 +13,6 @@ class CryptoView : public QMainWindow
 
 public:
     explicit CryptoView(QWidget *parent = 0);
-    void updatelabel(QString str){
     void LoadValues();
     ~CryptoView();
 

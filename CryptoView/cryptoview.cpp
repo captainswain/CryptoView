@@ -18,11 +18,6 @@ void CryptoView::on_addCurrencyBtn_clicked()
 {
     ui->label_11->setText("Hello");
 }
-//void CryptoView::updatelabel(Currency current, ){
-//    //label_11->setText("test!");
-//    //ui->statusLabel->setText(str);
-
-//}
 
 void CryptoView::LoadValues(){
 
