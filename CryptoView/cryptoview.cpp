@@ -22,11 +22,15 @@ CryptoView::~CryptoView()
 void CryptoView::on_addCurrencyBtn_clicked()
 {
     ui->label_11->setText("Hello");
+<<<<<<< HEAD
 
     QUrl url("https://api.coinmarketcap.com/v1/ticker/bitcoin/");
     QNetworkRequest request(url);
 
     connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(requestFinished(QNetworkReply *)));
+=======
+}
+>>>>>>> c901fc3999a1725f893a80fd5d59f9d12e3bbced
 
     qnam->get(request);
 }
