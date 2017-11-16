@@ -23,6 +23,7 @@ void CryptoView::on_addCurrencyBtn_clicked()
 {
     ui->label_11->setText("Hello");
 
+    // QUrl url("https://api.coinmarketcap.com/v1/ticker/?limit=5");
     QUrl url("https://api.coinmarketcap.com/v1/ticker/bitcoin/");
     QNetworkRequest request(url);
 
