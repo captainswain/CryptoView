@@ -21,7 +21,10 @@ CryptoView::~CryptoView()
 
 void CryptoView::on_addCurrencyBtn_clicked()
 {
+    // Show new widget
     ui->stackedWidget->setCurrentWidget(ui->addCurrencyWidget);
+
+    //Change Label testing
     ui->label_11->setText("Hello");
 
     QUrl url("https://api.coinmarketcap.com/v1/ticker/bitcoin/");
@@ -52,4 +55,10 @@ void CryptoView::requestFinished(QNetworkReply *reply)
     qDebug() << obj["price_usd"].toString();
     qDebug() << obj["last_updated"].toString();
 
+}
+
+void CryptoView::on_goBackBtn_clicked()
+{
+   // Go back to homepage
+   ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
 }

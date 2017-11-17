@@ -23,6 +23,8 @@ private slots:
     void on_addCurrencyBtn_clicked();
     void requestFinished(QNetworkReply *);
 
+    void on_goBackBtn_clicked();
+
 private:
     Ui::CryptoView *ui;
     QNetworkAccessManager *qnam;
