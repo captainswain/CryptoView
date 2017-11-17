@@ -21,6 +21,7 @@ CryptoView::~CryptoView()
 
 void CryptoView::on_addCurrencyBtn_clicked()
 {
+    ui->stackedWidget->setCurrentWidget(ui->addCurrencyWidget);
     ui->label_11->setText("Hello");
 
     QUrl url("https://api.coinmarketcap.com/v1/ticker/bitcoin/");
