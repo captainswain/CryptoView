@@ -1,5 +1,6 @@
 #include "cryptoview.h"
 #include "ui_cryptoview.h"
+#include "coin.h"
 
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -25,18 +26,8 @@ CryptoView::~CryptoView()
 
 void CryptoView::on_addCurrencyBtn_clicked()
 {
-    // Show new widget
-    ui->stackedWidget->setCurrentWidget(ui->addCurrencyWidget);
-
-    //Change Label testing
-    //ui->label_11->setText("Hello");
-
-    QUrl url("https://api.coinmarketcap.com/v1/ticker/bitcoin/");
-    QNetworkRequest request(url);
-
-    connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(requestFinished(QNetworkReply *)));
-
-    qnam->get(request);
+    //coin btc = new coin();
+   btcRequest();
 }
 
 
@@ -51,21 +42,38 @@ void CryptoView::LoadValues()
     // Imagine form.load in VS
 }
 
+void CryptoView::btcRequest()
+{
+    // Example usage of a get HTTP request
+    QUrl url("https://api.coinmarketcap.com/v1/ticker/?limit=4");
+    QNetworkRequest request(url);
+
+    // Connect our finished sinal to the requestFinished slot
+    connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(requestFinished(QNetworkReply *)));
+
+    // Send the get request
+    qnam->get(request);
+}
 
 void CryptoView::requestFinished(QNetworkReply *reply)
 {
+    // Read all data from the reply
     QString strReply = (QString)reply->readAll();
 
+    // Parse JSON
+    // Might be a better way of doing this
     QJsonDocument jsonDoc = QJsonDocument::fromJson(strReply.toUtf8());
-    QJsonObject jsonObj = jsonDoc.object();
-    QJsonArray jsonArr = jsonDoc.array();
-    QJsonObject obj = jsonArr.first().toObject();
+    QJsonArray json_array = jsonDoc.array();
 
-    qDebug() << obj["name"].toString();
-    qDebug() << obj["symbol"].toString();
-    qDebug() << obj["price_usd"].toString();
-    qDebug() << obj["last_updated"].toString();
+   foreach (const QJsonValue &value, json_array) {
+       QJsonObject json_obj = value.toObject();
 
+       // Output JSON items in JSON object
+       qDebug() << json_obj["name"].toString();
+       qDebug() << json_obj["symbol"].toString();
+       qDebug() << json_obj["price_usd"].toString();
+       qDebug() << json_obj["last_updated"].toString();
+   }
 }
 
 void CryptoView::on_goBackBtn_clicked()
