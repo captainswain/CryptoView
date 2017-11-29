@@ -31,7 +31,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0.25, x2:1, y2:0.858, stop:0 rg
      <string notr="true">background-color: rbga(0,0,0,0);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="homePageWidget">
      <widget class="QGroupBox" name="crytoBox_2">
@@ -55,7 +55,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0.25, x2:1, y2:0.858, stop:0 rg
       <property name="title">
        <string/>
       </property>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="coin2_title">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -84,7 +84,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;ETH&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="coin2_img">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -109,7 +109,7 @@ p, li { white-space: pre-wrap; }
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="label_12">
+      <widget class="QLabel" name="coin2_value">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -148,7 +148,7 @@ p, li { white-space: pre-wrap; }
       <property name="title">
        <string/>
       </property>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="coin3_title">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -177,7 +177,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;BCH&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="coin3_img">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -202,7 +202,7 @@ p, li { white-space: pre-wrap; }
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="label_13">
+      <widget class="QLabel" name="coin3_value">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -241,7 +241,7 @@ p, li { white-space: pre-wrap; }
       <property name="title">
        <string/>
       </property>
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="coin4_title">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -270,7 +270,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;XRP&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_8">
+      <widget class="QLabel" name="coin4_img">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -295,7 +295,7 @@ p, li { white-space: pre-wrap; }
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="label_14">
+      <widget class="QLabel" name="coin4_value">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -369,7 +369,7 @@ border-radius: 5px
       <property name="title">
        <string/>
       </property>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="coin1_title">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -398,7 +398,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;&quot;&gt;BTC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="coin1_img">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -423,7 +423,7 @@ p, li { white-space: pre-wrap; }
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="label_11">
+      <widget class="QLabel" name="coin1_value">
        <property name="geometry">
         <rect>
          <x>0</x>

@@ -29,7 +29,7 @@ void CryptoView::on_addCurrencyBtn_clicked()
     ui->stackedWidget->setCurrentWidget(ui->addCurrencyWidget);
 
     //Change Label testing
-    ui->label_11->setText("Hello");
+    //ui->label_11->setText("Hello");
 
     QUrl url("https://api.coinmarketcap.com/v1/ticker/bitcoin/");
     QNetworkRequest request(url);
@@ -40,8 +40,9 @@ void CryptoView::on_addCurrencyBtn_clicked()
 }
 
 
-void CryptoView::setCurrencyText(String currencyName, QLabel& titleLabel, QLabel& valueLabel ){
+void CryptoView::setCurrencyLabelText(QString currencyName, float value, float trend, QLabel& titleLabel, QLabel& valueLabel ){
 
+    // Eventually pass currency object to update a label group
 }
 
 void CryptoView::LoadValues()

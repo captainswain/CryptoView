@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QLabel>
 
 namespace Ui {
 class CryptoView;
@@ -14,6 +15,7 @@ class CryptoView : public QMainWindow
     Q_OBJECT
 
 public:
+    void setCurrencyLabelText(QString currencyName, float value, float trend, QLabel& titleLabel, QLabel& valueLabel );
     explicit CryptoView(QWidget *parent = 0);
     void updatelabel(QString str);
     void LoadValues();
