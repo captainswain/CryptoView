@@ -35,7 +35,7 @@ void CryptoView::LoadValues()
 void CryptoView::btcRequest(coin c)
 {
     // Example usage of a get HTTP request
-    QUrl url("https://api.coinmarketcap.com/v1/ticker/bitcoin/");
+    QUrl url("https://api.coinmarketcap.com/v1/ticker/?limit=5");
     QNetworkRequest request(url);
 
     // Connect our finished sinal to the requestFinished slot
@@ -65,7 +65,4 @@ void CryptoView::requestFinished(QNetworkReply *reply,coin c)
     qDebug() << obj["symbol"].toString();
     qDebug() << obj["price_usd"].toString();
     qDebug() << obj["last_updated"].toString();
-
-    c.setName(obj["name"].toString());
-    qDebug() << c.getName();
 }
