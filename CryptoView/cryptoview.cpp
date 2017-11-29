@@ -11,6 +11,10 @@ CryptoView::CryptoView(QWidget *parent) :
 {
     ui->setupUi(this);
     qnam = new QNetworkAccessManager(this);
+
+    //Lock Size
+    this->setFixedSize(this->width(),this->height());
+
     this->LoadValues();
 }
 
@@ -35,11 +39,17 @@ void CryptoView::on_addCurrencyBtn_clicked()
     qnam->get(request);
 }
 
+
+void CryptoView::setCurrencyText(String currencyName, QLabel& titleLabel, QLabel& valueLabel ){
+
+}
+
 void CryptoView::LoadValues()
 {
     // This is ran when the form is constructed
     // Imagine form.load in VS
 }
+
 
 void CryptoView::requestFinished(QNetworkReply *reply)
 {
@@ -59,6 +69,6 @@ void CryptoView::requestFinished(QNetworkReply *reply)
 
 void CryptoView::on_goBackBtn_clicked()
 {
-   // Go back to homepage
+   // Go back to crypto dashboard homepage
    ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
 }

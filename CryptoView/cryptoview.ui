@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>618</width>
-    <height>590</height>
+    <width>600</width>
+    <height>625</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,15 +23,15 @@ background: qlineargradient(spread:pad, x1:0, y1:0.25, x2:1, y2:0.858, stop:0 rg
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>611</width>
-      <height>571</height>
+      <width>601</width>
+      <height>631</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rbga(0,0,0,0);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="homePageWidget">
      <widget class="QGroupBox" name="crytoBox_2">
@@ -446,10 +446,10 @@ p, li { white-space: pre-wrap; }
      <widget class="QGroupBox" name="crytoBox_5">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>80</y>
-        <width>451</width>
-        <height>341</height>
+        <x>30</x>
+        <y>60</y>
+        <width>541</width>
+        <height>461</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -468,7 +468,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="goBackBtn">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>30</x>
         <y>20</y>
         <width>41</width>
         <height>31</height>
@@ -496,6 +496,38 @@ border-radius: 5px
        <string>&lt;</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>541</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Helvetica Neue</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgba(0, 0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Helvetica Neue'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:100; color:#ffffff;&quot;&gt;SETTINGS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <zorder>label_9</zorder>
+     <zorder>crytoBox_5</zorder>
+     <zorder>goBackBtn</zorder>
     </widget>
    </widget>
   </widget>
