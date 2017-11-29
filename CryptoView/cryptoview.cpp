@@ -12,6 +12,10 @@ CryptoView::CryptoView(QWidget *parent) :
 {
     ui->setupUi(this);
     qnam = new QNetworkAccessManager(this);
+
+    //Lock Size
+    this->setFixedSize(this->width(),this->height());
+
     this->LoadValues();
 }
 
@@ -24,6 +28,12 @@ void CryptoView::on_addCurrencyBtn_clicked()
 {
     //coin btc = new coin();
    btcRequest();
+}
+
+
+void CryptoView::setCurrencyLabelText(QString currencyName, float value, float trend, QLabel& titleLabel, QLabel& valueLabel ){
+
+    // Eventually pass currency object to update a label group
 }
 
 void CryptoView::LoadValues()
@@ -64,4 +74,10 @@ void CryptoView::requestFinished(QNetworkReply *reply)
        qDebug() << json_obj["price_usd"].toString();
        qDebug() << json_obj["last_updated"].toString();
    }
+}
+
+void CryptoView::on_goBackBtn_clicked()
+{
+   // Go back to crypto dashboard homepage
+   ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
 }
