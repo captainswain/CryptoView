@@ -10,7 +10,6 @@ class coin : public QWidget
 public:
     explicit coin(QWidget *parent = nullptr);
 
-    coin();
     coin(QString, QString, QString, int, float, float, float,
          float, float, float, float, float, float, float, int);
 

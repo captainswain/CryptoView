@@ -1,6 +1,7 @@
 #ifndef CRYPTOVIEW_H
 #define CRYPTOVIEW_H
 
+#include "coin.h"
 #include <QMainWindow>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -21,7 +22,8 @@ public:
 
 private slots:
     void on_addCurrencyBtn_clicked();
-    void requestFinished(QNetworkReply *);
+    void requestFinished(QNetworkReply *,coin c);
+    void btcRequest(coin c);
 
 private:
     Ui::CryptoView *ui;
