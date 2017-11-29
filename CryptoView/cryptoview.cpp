@@ -11,6 +11,10 @@ CryptoView::CryptoView(QWidget *parent) :
 {
     ui->setupUi(this);
     qnam = new QNetworkAccessManager(this);
+
+    //Lock Size
+    this->setFixedSize(this->width(),this->height());
+
     this->LoadValues();
 }
 
@@ -21,7 +25,11 @@ CryptoView::~CryptoView()
 
 void CryptoView::on_addCurrencyBtn_clicked()
 {
-    ui->label_11->setText("Hello");
+    // Show new widget
+    ui->stackedWidget->setCurrentWidget(ui->addCurrencyWidget);
+
+    //Change Label testing
+    //ui->label_11->setText("Hello");
 
     QUrl url("https://api.coinmarketcap.com/v1/ticker/bitcoin/");
     QNetworkRequest request(url);
@@ -31,11 +39,18 @@ void CryptoView::on_addCurrencyBtn_clicked()
     qnam->get(request);
 }
 
+
+void CryptoView::setCurrencyLabelText(QString currencyName, float value, float trend, QLabel& titleLabel, QLabel& valueLabel ){
+
+    // Eventually pass currency object to update a label group
+}
+
 void CryptoView::LoadValues()
 {
     // This is ran when the form is constructed
     // Imagine form.load in VS
 }
+
 
 void CryptoView::requestFinished(QNetworkReply *reply)
 {
@@ -51,4 +66,10 @@ void CryptoView::requestFinished(QNetworkReply *reply)
     qDebug() << obj["price_usd"].toString();
     qDebug() << obj["last_updated"].toString();
 
+}
+
+void CryptoView::on_goBackBtn_clicked()
+{
+   // Go back to crypto dashboard homepage
+   ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
 }
