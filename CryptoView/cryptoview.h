@@ -22,8 +22,8 @@ public:
 
 private slots:
     void on_addCurrencyBtn_clicked();
-    void requestFinished(QNetworkReply *,coin c);
-    void btcRequest(coin c);
+    void requestFinished(QNetworkReply *);
+    void btcRequest();
 
 private:
     Ui::CryptoView *ui;
