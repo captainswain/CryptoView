@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         cryptoview.cpp \
-    coin.cpp
+    coin.cpp \
+    timer.cpp
 
 HEADERS += \
         cryptoview.h \
-    coin.h
+    coin.h \
+    timer.h
 
 FORMS += \
         cryptoview.ui
