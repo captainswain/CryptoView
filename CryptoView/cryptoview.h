@@ -17,9 +17,10 @@ class CryptoView : public QMainWindow
 
 public:
     void setCurrencyLabelText(QString currencyName, float value, float trend, QLabel& titleLabel, QLabel& valueLabel );
+    void pushCoin(coin& coin);
     explicit CryptoView(QWidget *parent = 0);
     void updatelabel(QString str);
-    void LoadValues();
+    void formLoad();
     ~CryptoView();
 
 private slots:

@@ -16,7 +16,8 @@ CryptoView::CryptoView(QWidget *parent) :
     //Lock Size
     this->setFixedSize(this->width(),this->height());
 
-    this->LoadValues();
+    // Load Currency Values from api and do all form load
+    formLoad();
 }
 
 CryptoView::~CryptoView()
@@ -27,19 +28,29 @@ CryptoView::~CryptoView()
 void CryptoView::on_addCurrencyBtn_clicked()
 {
     //coin btc = new coin();
-   btcRequest();
 }
 
 
+void CryptoView::pushCoin(coin& coin){
+
+    int rank = coin.getRank();
+
+    qDebug() << "Rank is: " << rank;
+
+
+}
+
+//Helper class to update ui
 void CryptoView::setCurrencyLabelText(QString currencyName, float value, float trend, QLabel& titleLabel, QLabel& valueLabel ){
 
     // Eventually pass currency object to update a label group
 }
 
-void CryptoView::LoadValues()
+
+//Form Load
+void CryptoView::formLoad()
 {
-    // This is ran when the form is constructed
-    // Imagine form.load in VS
+    btcRequest();
 }
 
 void CryptoView::btcRequest()
@@ -69,10 +80,21 @@ void CryptoView::requestFinished(QNetworkReply *reply)
        QJsonObject json_obj = value.toObject();
 
        // Output JSON items in JSON object
+       qDebug() << json_obj["rank"].toString();
        qDebug() << json_obj["name"].toString();
        qDebug() << json_obj["symbol"].toString();
        qDebug() << json_obj["price_usd"].toString();
        qDebug() << json_obj["last_updated"].toString();
+
+       //create coin object
+       coin tempCoin;
+
+       tempCoin.setRank(json_obj["rank"].toString().toInt());
+       tempCoin.setName(json_obj["name"].toString());
+       tempCoin.setSymbol(json_obj["symbol"].toString());
+       tempCoin.setPrice_usd(json_obj["price_usd"].toString().toFloat());
+
+       pushCoin(tempCoin);
    }
 }
 
