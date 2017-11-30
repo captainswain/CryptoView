@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QLabel>
+#include <QTimer>
 
 namespace Ui {
 class CryptoView;
@@ -33,6 +34,7 @@ private slots:
 private:
     Ui::CryptoView *ui;
     QNetworkAccessManager *qnam;
+    QTimer *timer;
 };
 
 #endif // CRYPTOVIEW_H
