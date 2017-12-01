@@ -1,5 +1,5 @@
 # CryptoView
-Display top 5 cryptocurrencies in real-time all in a convenient user interface. Track your crypto-purchases and track your gains or losses.
+Display top 4 cryptocurrencies in real-time all in a convenient user interface. Track your crypto-purchases and track your gains or losses.
 
 # Motivation
 Build a beautiful desktop application to display and provide information regarding pricing and trends of popular cryptocurrencies.
