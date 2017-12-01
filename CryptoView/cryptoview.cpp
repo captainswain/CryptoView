@@ -27,7 +27,8 @@ CryptoView::~CryptoView()
 
 void CryptoView::on_addCurrencyBtn_clicked()
 {
-    //coin btc = new coin();
+    //Show next page
+    ui->stackedWidget->setCurrentWidget(ui->addCurrencyWidget);
 }
 
 
