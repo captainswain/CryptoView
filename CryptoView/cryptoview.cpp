@@ -16,6 +16,11 @@ CryptoView::CryptoView(QWidget *parent) :
     //Lock Size
     this->setFixedSize(this->width(),this->height());
 
+    // Start timer to get data
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(btcRequest()));
+    timer->start(15000); // 15000ms TODO: Make this be changable
+
     // Load Currency Values from api and do all form load
     formLoad();
 }
