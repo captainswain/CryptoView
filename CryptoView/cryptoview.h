@@ -17,7 +17,7 @@ class CryptoView : public QMainWindow
     Q_OBJECT
 
 public:
-    void setCurrencyLabelText(QString currencyName, float value, float trend, QLabel& titleLabel, QLabel& valueLabel );
+    void setCurrencyLabelText(coin& coin, QLabel& imgLabel, QLabel& valueLabel, QLabel& titleLabel );
     void pushCoin(coin& coin);
     explicit CryptoView(QWidget *parent = 0);
     void updatelabel(QString str);
