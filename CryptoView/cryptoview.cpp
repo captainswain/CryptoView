@@ -40,6 +40,23 @@ void CryptoView::pushCoin(coin& coin){
 
     int rank = coin.getRank();
 
+    switch (rank) {
+    case 1:
+        ui->coin1_value->setText(QString::number(coin.getPrice_usd()));
+        break;
+    case 2:
+        ui->coin2_value->setText(QString::number(coin.getPrice_usd()));
+        break;
+    case 3:
+        ui->coin3_value->setText(QString::number(coin.getPrice_usd()));
+        break;
+    case 4:
+        ui->coin4_value->setText(QString::number(coin.getPrice_usd()));
+        break;
+    default:
+        break;
+    }
+
     qDebug() << "Rank is: " << rank;
 
 
