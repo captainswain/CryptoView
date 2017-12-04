@@ -39,9 +39,11 @@ public:
     // Check If coin exists in database.
     bool coinExists(const QString& name);
 
-
     // Print all coins in database
     bool printAllCoins() const;
+
+    // check if DB connection is open
+    bool isOpen() const;
 
 
 private:

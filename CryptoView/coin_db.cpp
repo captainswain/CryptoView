@@ -34,21 +34,34 @@ DbManager::~DbManager()
     }
 }
 
+/*
+ * Create coin table
+ * @param none
+ *
+ */
 bool DbManager::createTable()
 {
 
     QSqlQuery query;
-    query.prepare("CREATE TABLE people(id INTEGER PRIMARY KEY, name TEXT);");
+    query.prepare("CREATE TABLE Coin(id QSTRING(5) PRIMARY KEY NOT NULL, name TEXT, symbol QSTRING(5) NOT NULL UNIQUE, price_usd FLOAT(5) NOT NULL, [24h_volume_usd] FLOAT(5) NOT NULL, market_cap_usd FLOAT(5) NOT NULL, available_supply FLOAT(5) NOT NULL, total_supply FLOAT(5) NOT NULL, percent_change_1h QSTRING(5) NOT NULL, percent_change_24h QSTRING(5) NOT NULL, percent_change_7d QSTRING(5) NOT NULL, last_updated FLOAT(5) NOT NULL);");
 
     if (!query.exec())
     {
-        qDebug() << "Couldn't create the table 'people': one might already exist.";
+        qDebug() << "Couldn't create the table 'coin': one might already exist.";
         return false;
     }
 
     return true;
 }
 
+/*
+ * Check if DB connection is open.
+ *
+ */
+bool DbManager::isOpen() const
+{
+    return m_db.isOpen();
+}
 
 /*
  * Add Coin to databse
