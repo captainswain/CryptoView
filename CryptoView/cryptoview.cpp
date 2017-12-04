@@ -5,7 +5,6 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
-#include <iostream>
 
 CryptoView::CryptoView(QWidget *parent) :
     QMainWindow(parent),

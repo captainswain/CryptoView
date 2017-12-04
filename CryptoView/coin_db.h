@@ -2,19 +2,46 @@
 #define DATABASE_H
 #pragma once
 
+
+#include "coin.h"
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QtDebug>
+#include <QSqlError>
+#include <QSqlRecord>
+
+
 class DbManager
 {
 public:
-    DbManager(const QString& path); //constructor
 
-    ~DbManager(); //destructor
+    // Constructor
+    DbManager(const QString& path);
 
-    bool addCoin(const QString& id, const Qstring& symbol, const Qstring& price_usd, const Qstrng & 24h, const Qstring& cap,
-        const Qstring& availableSupply, const Qstring& totalSupply, const Qstring & 1h, const Qstring & 24h, const Qstring & 7d, const Qstring& lastUpdate); //add or update a specific coin type
+    // Deconstructor
+    ~DbManager();
 
-    bool deleteCoin(const QString& coinType); //delete a specific type of coin
+    // Create Database Structure
+    bool createTable();
 
-    bool PrintAllCoins() const;
+    // Add coin to database.
+    bool addCoin(coin coin);
+
+    // Delete coin from database (using coin object)
+    bool deleteCoin(coin coin);
+
+    // Delete a coin based off name
+    bool deleteCoin(const QString& name);
+
+    // Delete all coins
+    bool deleteAllCoins();
+
+    // Check If coin exists in database.
+    bool coinExists(const QString& name);
+
+
+    // Print all coins in database
+    bool printAllCoins() const;
 
 
 private:

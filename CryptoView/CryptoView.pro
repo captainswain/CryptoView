@@ -22,15 +22,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+# Add SQL module to project.
+QT += sql
 
 SOURCES += \
         main.cpp \
         cryptoview.cpp \
-    coin.cpp
+    coin.cpp \
+    coin_db.cpp
 
 HEADERS += \
         cryptoview.h \
-    coin.h
+    coin.h \
+    coin_db.h
 
 FORMS += \
         cryptoview.ui
