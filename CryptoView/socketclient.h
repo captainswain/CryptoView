@@ -10,6 +10,20 @@
 #include <QAbstractSocket>
 #include <QJsonObject>
 
+struct CoinData
+{
+    int bid;
+    double bidSize;
+    int ask;
+    double askSize;
+    double dailyChange;
+    double dailyChangePercent;
+    double lastPrice;
+    double volume;
+    int high;
+    int low;
+};
+
 class SocketClient : public QObject
 {
     Q_OBJECT
@@ -18,7 +32,7 @@ public:
     void open(const QUrl &url, QList<QString> symbols);
 
 signals:
-    void coinUpdate(int channelId, double price);
+    void coinUpdate(int channelId, CoinData data);
     void newCoin(int channelId, QString pair);
 
 private slots:

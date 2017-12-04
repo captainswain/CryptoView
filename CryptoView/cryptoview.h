@@ -7,7 +7,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QLabel>
-#include <QTimer>
+#include <QMap>
+#include <QList>
 
 #include "socketclient.h"
 #include "httpclient.h"
@@ -31,7 +32,7 @@ public:
 private slots:
     void on_addCurrencyBtn_clicked();
     void on_goBackBtn_clicked();
-    void onCoinUpdate(int channelId, double price);
+    void onCoinUpdate(int channelId, CoinData data);
     void onNewCoin(int channelId, QString pair);
     void onResponse(QNetworkReply *reply);
 
@@ -39,6 +40,8 @@ private:
     Ui::CryptoView *ui;
     SocketClient *socketClient;
     HTTPClient *httpClient;
+    QMap<int, QString> channelMap;
+    QMap<QString, coin*> coinMap;
 };
 
 #endif // CRYPTOVIEW_H

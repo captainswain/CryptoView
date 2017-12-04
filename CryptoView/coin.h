@@ -13,7 +13,6 @@ public:
     coin(QString, QString, QString, int, float, float, float,
          float, float, float, float, float, float, float, int);
 
-
     QString getId() const;
     void setId(const QString &value);
 
@@ -59,10 +58,14 @@ public:
     int getLast_updated() const;
     void setLast_updated(int value);
 
+    int getChannelID() const;
+    void setChannelID(int value);
+
 protected:
     QString id;
     QString name;
     QString symbol;
+    int channelID;
     int rank;
     float price_usd;
     float price_btc;

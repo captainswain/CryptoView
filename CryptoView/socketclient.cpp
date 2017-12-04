@@ -16,7 +16,6 @@ SocketClient::SocketClient(QObject *parent) : QObject(parent)
 void SocketClient::open(const QUrl &url, QList<QString> symbols)
 {
     m_symbols = symbols;
-
     m_webSocket.open(QUrl(url));
 }
 
@@ -54,7 +53,21 @@ void SocketClient::onTextMessageReceived(QString message)
             return;
 
         // Emit coin data on ticker update
-        emit coinUpdate(arr.at(0).toInt(), arr.at(1).toArray().at(6).toDouble());
+        QJsonArray selected = arr.at(1).toArray();
+
+        CoinData tempCoin;
+        tempCoin.bid = selected.at(0).toInt();
+        tempCoin.bidSize = selected.at(1).toDouble();
+        tempCoin.ask = selected.at(2).toInt();
+        tempCoin.askSize = selected.at(3).toDouble();
+        tempCoin.dailyChange = selected.at(4).toDouble();
+        tempCoin.dailyChangePercent = selected.at(5).toDouble();
+        tempCoin.lastPrice = selected.at(6).toDouble();
+        tempCoin.volume = selected.at(7).toDouble();
+        tempCoin.high = selected.at(8).toInt();
+        tempCoin.low = selected.at(9).toInt();
+
+        emit coinUpdate(arr.at(0).toInt(), tempCoin);
     }
 }
 

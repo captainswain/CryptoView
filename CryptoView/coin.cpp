@@ -150,6 +150,16 @@ void coin::setLast_updated(int value)
     last_updated = value;
 }
 
+int coin::getChannelID() const
+{
+    return channelID;
+}
+
+void coin::setChannelID(int value)
+{
+    channelID = value;
+}
+
 int coin::getLast_updated() const
 {
     return last_updated;

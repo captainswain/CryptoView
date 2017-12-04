@@ -74,10 +74,10 @@ void CryptoView::pushCoin(coin& coin){
 void CryptoView::setCurrencyLabelText(coin& coin, QLabel& imgLabel, QLabel& valueLabel, QLabel& titleLabel ){
 
     //check coin trend then set colors accordingly.
-    if(coin.getPercent_change_1h() > 0){
-        valueLabel.setText("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:'.SF NS Text'; font-size:13pt; font-weight:400; font-style:normal;\"><p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#ffffff;\">" + QString::number(coin.getPrice_usd()) + "</span><span style=\" font-size:14pt; color:#45bf55;\"> " +QString::number(coin.getPercent_change_1h()) +" % </span></p></body></html>");
+    if(coin.getPercent_change_24h() > 0){
+        valueLabel.setText("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:'.SF NS Text'; font-size:13pt; font-weight:400; font-style:normal;\"><p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#ffffff;\">$" + QString::number(coin.getPrice_usd()) + "</span><span style=\" font-size:14pt; color:#45bf55;\"> +" +QString::number(coin.getPercent_change_24h()) +" % </span></p></body></html>");
     }else{
-        valueLabel.setText("<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">"+ QString::number(coin.getPrice_usd()) +"<span style=\"color: #EA5455\"> " +QString::number(coin.getPercent_change_1h()) +"%    </span></span></p></body></html>");
+        valueLabel.setText("<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; color:#ffffff;\">$"+ QString::number(coin.getPrice_usd()) +"<span style=\"color: #EA5455\"> " +QString::number(coin.getPercent_change_24h()) +"%    </span></span></p></body></html>");
     }
 
     //Set Coin title
@@ -112,16 +112,23 @@ void CryptoView::on_goBackBtn_clicked()
     ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
 }
 
-void CryptoView::onCoinUpdate(int channelId, double price)
+void CryptoView::onCoinUpdate(int channelId, CoinData data)
 {
     // Handle coin updates
-    qDebug() << channelId << ":" << price;
+    //qDebug() << channelId << ":" << price;
+    qDebug() << data.lastPrice << "  " << data.dailyChangePercent;
+    QString symbol = channelMap.value(channelId);
+    coinMap.value(symbol)->setPrice_usd(data.lastPrice);
+    coinMap.value(symbol)->setPercent_change_24h(data.dailyChangePercent);
+    // UPDATE UI
+    pushCoin(*coinMap.value(symbol));
 }
 
 void CryptoView::onNewCoin(int channelId, QString pair)
 {
     // Handle new coin
-    qDebug() << channelId << ":" << pair;
+    QString symbol = pair.replace("USD", "");
+    channelMap.insert(channelId, symbol);
 }
 
 void CryptoView::onResponse(QNetworkReply *reply)
@@ -137,7 +144,13 @@ void CryptoView::onResponse(QNetworkReply *reply)
     QList<QString> symbols;
     foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
+
         symbols.push_back(json_obj["symbol"].toString());
+
+        coin *newCoin = new coin();
+        newCoin->setSymbol(json_obj["symbol"].toString());
+        newCoin->setRank(json_obj["rank"].toString().toInt());
+        coinMap.insert(json_obj["symbol"].toString(), newCoin);
     }
 
     // Open our websocket connection and pass top coins
