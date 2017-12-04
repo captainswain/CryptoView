@@ -172,3 +172,27 @@ void CryptoView::on_candleGoBackBtn_clicked()
 }
 
 
+
+void CryptoView::on_coin2_btn_clicked()
+{
+    //Show candle stick widget
+    ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
+
+    //call candle stick method
+}
+
+void CryptoView::on_coin3_btn_clicked()
+{
+    //Show candle stick widget
+    ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
+
+    //call candle stick method
+}
+
+void CryptoView::on_coin4_btn_clicked()
+{
+    //Show candle stick widget
+    ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
+
+    //call candle stick method
+}
