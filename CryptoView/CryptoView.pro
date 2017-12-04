@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network websockets sql
+QT       += core gui network websockets sql charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,17 +30,20 @@ SOURCES += \
         coin.cpp \
         coin_db.cpp \
         socketclient.cpp \
-        httpclient.cpp
+        httpclient.cpp \
+    candlestickdialog.cpp
 
 HEADERS += \
         cryptoview.h \
         coin.h \
         coin_db.h \
         socketclient.h \
-        httpclient.h
+        httpclient.h \
+    candlestickdialog.h
 
 FORMS += \
-        cryptoview.ui
+        cryptoview.ui \
+    candlestickdialog.ui
 
 RESOURCES += \
     resources.qrc

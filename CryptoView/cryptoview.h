@@ -12,6 +12,7 @@
 
 #include "socketclient.h"
 #include "httpclient.h"
+#include "candlestickdialog.h"
 
 namespace Ui {
 class CryptoView;
@@ -52,6 +53,7 @@ private:
     HTTPClient *httpClient;
     QMap<int, QString> channelMap;
     QMap<QString, coin*> coinMap;
+    CandleStickDialog *candles;
 };
 
 #endif // CRYPTOVIEW_H
