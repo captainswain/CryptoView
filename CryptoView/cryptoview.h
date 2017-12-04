@@ -2,6 +2,7 @@
 #define CRYPTOVIEW_H
 
 #include "coin.h"
+#include <coin_db.h>
 #include <QMainWindow>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>

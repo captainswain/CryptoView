@@ -6,7 +6,9 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QList>
-#include <iostream>
+
+// Databse Path
+static const QString path = "coins.db";
 
 CryptoView::CryptoView(QWidget *parent) :
     QMainWindow(parent),
@@ -91,6 +93,19 @@ void CryptoView::setCurrencyLabelText(coin& coin, QLabel& imgLabel, QLabel& valu
 //Form Load
 void CryptoView::formLoad()
 {
+    DbManager db(path);
+
+    //Check If Db isOpen.
+    if (db.isOpen())
+    {
+        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+    }
+    else
+    {
+        qDebug() << "Database is not open!";
+    }
+
+    btcRequest();
 }
 
 void CryptoView::on_goBackBtn_clicked()
