@@ -5,9 +5,9 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QList>
 
 // Databse Path
-
 static const QString path = "coins.db";
 
 CryptoView::CryptoView(QWidget *parent) :
@@ -15,15 +15,17 @@ CryptoView::CryptoView(QWidget *parent) :
     ui(new Ui::CryptoView)
 {
     ui->setupUi(this);
-    qnam = new QNetworkAccessManager(this);
+
+    httpClient = new HTTPClient(this);
+    connect(httpClient, &HTTPClient::response, this, &CryptoView::onResponse);
+    httpClient->get(QUrl("https://api.coinmarketcap.com/v1/ticker/?limit=4"));
+
+    socketClient = new SocketClient(this);
+    connect(socketClient, &SocketClient::coinUpdate, this, &CryptoView::onCoinUpdate);
+    connect(socketClient, &SocketClient::newCoin, this, &CryptoView::onNewCoin);
 
     //Lock Size
     this->setFixedSize(this->width(),this->height());
-
-    // Start timer to get data
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(btcRequest()));
-    timer->start(15000); // 15000ms TODO: Make this be changable
 
     // Load Currency Values from api and do all form load
     formLoad();
@@ -31,6 +33,8 @@ CryptoView::CryptoView(QWidget *parent) :
 
 CryptoView::~CryptoView()
 {
+    socketClient->disconnect();
+    httpClient->disconnect();
     delete ui;
 }
 
@@ -39,7 +43,6 @@ void CryptoView::on_addCurrencyBtn_clicked()
     //Show next page
     ui->stackedWidget->setCurrentWidget(ui->addCurrencyWidget);
 }
-
 
 void CryptoView::pushCoin(coin& coin){
 
@@ -64,11 +67,7 @@ void CryptoView::pushCoin(coin& coin){
         break;
     }
 
-
-
     qDebug() << "Rank is: " << rank;
-
-
 }
 
 //Helper class to update ui
@@ -84,7 +83,6 @@ void CryptoView::setCurrencyLabelText(coin& coin, QLabel& imgLabel, QLabel& valu
     //Set Coin title
     titleLabel.setText("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:'Helvetica Neue'; font-size:14pt; font-weight:400; font-style:normal;\"><p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Helvetica Neue,Helvetica,Arial,sans-serif'; font-size:24px; font-weight:496; color:#ffffff;\">" + coin.getSymbol() + "</span></p></body></html>");
 
-
     QString abreviation = coin.getSymbol();
 
     QPixmap mypix (":resources/white-logos/" + abreviation.toLower() + ".png");
@@ -92,12 +90,10 @@ void CryptoView::setCurrencyLabelText(coin& coin, QLabel& imgLabel, QLabel& valu
 
 }
 
-
 //Form Load
 void CryptoView::formLoad()
 {
     DbManager db(path);
-
 
     //Check If Db isOpen.
     if (db.isOpen())
@@ -112,20 +108,25 @@ void CryptoView::formLoad()
     btcRequest();
 }
 
-void CryptoView::btcRequest()
+void CryptoView::on_goBackBtn_clicked()
 {
-    // Example usage of a get HTTP request
-    QUrl url("https://api.coinmarketcap.com/v1/ticker/?limit=4");
-    QNetworkRequest request(url);
-
-    // Connect our finished sinal to the requestFinished slot
-    connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(requestFinished(QNetworkReply *)));
-
-    // Send the get request
-    qnam->get(request);
+   // Go back to crypto dashboard homepage
+    ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
 }
 
-void CryptoView::requestFinished(QNetworkReply *reply)
+void CryptoView::onCoinUpdate(int channelId, double price)
+{
+    // Handle coin updates
+    qDebug() << channelId << ":" << price;
+}
+
+void CryptoView::onNewCoin(int channelId, QString pair)
+{
+    // Handle new coin
+    qDebug() << channelId << ":" << pair;
+}
+
+void CryptoView::onResponse(QNetworkReply *reply)
 {
     // Read all data from the reply
     QString strReply = (QString)reply->readAll();
@@ -135,32 +136,12 @@ void CryptoView::requestFinished(QNetworkReply *reply)
     QJsonDocument jsonDoc = QJsonDocument::fromJson(strReply.toUtf8());
     QJsonArray json_array = jsonDoc.array();
 
-   foreach (const QJsonValue &value, json_array) {
-       QJsonObject json_obj = value.toObject();
+    QList<QString> symbols;
+    foreach (const QJsonValue &value, json_array) {
+        QJsonObject json_obj = value.toObject();
+        symbols.push_back(json_obj["symbol"].toString());
+    }
 
-       // Output JSON items in JSON object
-       qDebug() << json_obj["rank"].toString();
-       qDebug() << json_obj["name"].toString();
-       qDebug() << json_obj["symbol"].toString();
-       qDebug() << json_obj["price_usd"].toString();
-       qDebug() << json_obj["last_updated"].toString();
-       qDebug() << json_obj["percent_change_1h"].toString();
-
-       //create coin object
-       coin tempCoin;
-
-       tempCoin.setRank(json_obj["rank"].toString().toInt());
-       tempCoin.setName(json_obj["name"].toString());
-       tempCoin.setSymbol(json_obj["symbol"].toString());
-       tempCoin.setPrice_usd(json_obj["price_usd"].toString().toFloat());
-       //percent_change_1h
-       tempCoin.setPercent_change_1h(json_obj["percent_change_1h"].toString().toFloat());
-       pushCoin(tempCoin);
-   }
-}
-
-void CryptoView::on_goBackBtn_clicked()
-{
-   // Go back to crypto dashboard homepage
-   ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
+    // Open our websocket connection and pass top coins
+    socketClient->open(QUrl("wss://api.bitfinex.com/ws/2"), symbols);
 }
