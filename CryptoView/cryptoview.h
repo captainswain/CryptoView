@@ -36,6 +36,12 @@ private slots:
     void onNewCoin(int channelId, QString pair);
     void onResponse(QNetworkReply *reply);
 
+    void on_coin1_btn_clicked();
+
+    void on_goBackBtn_2_clicked();
+
+    void on_candleGoBackBtn_clicked();
+
 private:
     Ui::CryptoView *ui;
     SocketClient *socketClient;

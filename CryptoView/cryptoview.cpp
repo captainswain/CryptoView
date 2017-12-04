@@ -156,3 +156,19 @@ void CryptoView::onResponse(QNetworkReply *reply)
     // Open our websocket connection and pass top coins
     socketClient->open(QUrl("wss://api.bitfinex.com/ws/2"), symbols);
 }
+
+void CryptoView::on_coin1_btn_clicked()
+{
+    //Show candle stick widget
+    ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
+
+    //call candle stick method
+}
+
+void CryptoView::on_candleGoBackBtn_clicked()
+{
+    // Go back to crypto dashboard homepage
+     ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
+}
+
+

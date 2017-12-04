@@ -432,6 +432,22 @@ border-radius: 5px
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;--&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="coin1_btn">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>231</width>
+         <height>241</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgba(0, 0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="addCurrencyWidget">
@@ -584,6 +600,39 @@ p, li { white-space: pre-wrap; }
      <zorder>label_9</zorder>
      <zorder>crytoBox_5</zorder>
      <zorder>goBackBtn</zorder>
+    </widget>
+    <widget class="QWidget" name="candleStickWidget">
+     <widget class="QPushButton" name="candleGoBackBtn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#candleGoBackBtn{
+background:rgba(0,0,0,0);
+border-width: 1px;
+border-style: solid;
+border-color: rgba(255,255,255,0.5);
+color: white;
+border-radius: 5px
+}
+#candleGoBackBtn:hover{
+background:rgba(255,255,255,0.2);
+border-width: 1px;
+border-style: solid;
+border-color: rgba(255,255,255,0.5);
+color: white;
+border-radius: 5px
+}</string>
+      </property>
+      <property name="text">
+       <string>&lt;</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
