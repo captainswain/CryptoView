@@ -104,8 +104,6 @@ void CryptoView::formLoad()
     {
         qDebug() << "Database is not open!";
     }
-
-    btcRequest();
 }
 
 void CryptoView::on_goBackBtn_clicked()
