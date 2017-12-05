@@ -1,17 +1,14 @@
-# CryptoView
-Display top 4 cryptocurrencies in real-time all in a convenient user interface. Track your crypto-purchases and track your gains or losses.
+<p align="center"><img src="https://i.imgur.com/xBOaUcT.png"></p>
+
+Displays the top 4 cryptocurrencies in real-time all in a convenient user interface. Track your crypto-purchases and stay on top of the ever changing cryptocurrency landscape.
 
 # Motivation
-Build a beautiful desktop application to display and provide information regarding pricing and trends of popular cryptocurrencies.
+We want to build a beautiful desktop application to display and provide information regarding the pricing and trends of popular cryptocurrencies.
 
-# Possible Technologies
-Bitcoin (Blockchain API): https://blockchain.info/api
+# Technologies Used
 
-Crypto API: https://coinmarketcap.com/api/
-
-Trumpia API: https://trumpia.com/api/docs/rest/overview.php
-
-JSON API: https://github.com/nlohmann/json
+Toplist API: https://coinmarketcap.com/api/
+Realtime API: bitfinex.com
 
 # Short Term Goals
 1. Real-time bitcoin pricing
@@ -32,7 +29,7 @@ JSON API: https://github.com/nlohmann/json
     * Ability to change to different exchanges
 
 # Roles
-Jonathon Mouchou - Database
+Jonathon Mouchou - Flex (every role)
 
 Shane Lindsay - GUI
 
