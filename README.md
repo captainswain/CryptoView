@@ -8,6 +8,11 @@ We want to build a beautiful desktop application to display and provide informat
 # Technologies Used
 * Toplist API: https://coinmarketcap.com/api/
 * Realtime API: bitfinex.com
+* QT Creator(free download): https://www.qt.io/download-qt-for-application-development
+
+# How to Download
+*QT Creator is required*
+```git clone https://github.com/CSUF-CPSC254-2017F0102/CryptoView.git```
 
 # Short Term Goals
 1. Real-time bitcoin pricing for Bitcoin, Bitcoin Cash, Ethereum, and Ripple.
@@ -28,10 +33,7 @@ We want to build a beautiful desktop application to display and provide informat
     * Data: buy-in price
 
 # Roles
-Jonathon Mouchou - Flex (every role)
-
-Shane Lindsay - GUI
-
-Kevin Vu - API
-
-Daniel Sanchez - Data Processing
+* Jonathon Mouchou - Flex (every role)
+* Shane Lindsay - GUI
+* Kevin Vu - API
+* Daniel Sanchez - Data Processing
