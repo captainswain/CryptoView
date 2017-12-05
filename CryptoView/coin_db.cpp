@@ -174,6 +174,7 @@ bool DbManager::printAllCoins() const
     QSqlQuery query("SELECT * FROM Coin");
 
     int idName = query.record().indexOf("id");
+
     while (query.next())
     {
         QString name = query.value(idName).toString();

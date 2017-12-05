@@ -38,11 +38,6 @@ CryptoView::~CryptoView()
     delete ui;
 }
 
-void CryptoView::on_addCurrencyBtn_clicked()
-{
-    //Show next page
-    ui->stackedWidget->setCurrentWidget(ui->addCurrencyWidget);
-}
 
 void CryptoView::pushCoin(coin& coin){
 
@@ -106,12 +101,6 @@ void CryptoView::formLoad()
     }
 }
 
-void CryptoView::on_goBackBtn_clicked()
-{
-   // Go back to crypto dashboard homepage
-    ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
-}
-
 void CryptoView::onCoinUpdate(int channelId, CoinData data)
 {
     // Handle coin updates
@@ -161,16 +150,11 @@ void CryptoView::onResponse(QNetworkReply *reply)
 void CryptoView::on_coin1_btn_clicked()
 {
     //Show candle stick widget
-    ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
+    candles = new CandleStickDialog(coinRankMap.value(1), this);
+    candles->show();
 
-    //call candle stick method
 }
 
-void CryptoView::on_candleGoBackBtn_clicked()
-{
-    // Go back to crypto dashboard homepage
-     ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
-}
 
 void CryptoView::on_coin2_btn_clicked()
 {
@@ -182,16 +166,13 @@ void CryptoView::on_coin2_btn_clicked()
 void CryptoView::on_coin3_btn_clicked()
 {
     //Show candle stick widget
-    ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
-
-    //call candle stick method
+    candles = new CandleStickDialog(coinRankMap.value(3), this);
+    candles->show();
 }
 
 void CryptoView::on_coin4_btn_clicked()
 {
     //Show candle stick widget
-    ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
-
-    //call candle stick method
-
+    candles = new CandleStickDialog(coinRankMap.value(4), this);
+    candles->show();
 }
