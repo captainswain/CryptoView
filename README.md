@@ -17,7 +17,9 @@ We want to build a beautiful desktop application to display and provide informat
 
 # How to Download
 
-```git clone https://github.com/CSUF-CPSC254-2017F0102/CryptoView.git```
+```
+git clone https://github.com/CSUF-CPSC254-2017F0102/CryptoView.git
+```
 
 # Short Term Goals
 1. Real-time bitcoin pricing for Bitcoin, Bitcoin Cash, Ethereum, and Ripple.
