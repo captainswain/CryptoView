@@ -11,7 +11,7 @@ We want to build a beautiful desktop application to display and provide informat
 * QT Creator(free download): https://www.qt.io/download-qt-for-application-development
 
 # How to Download
-*QT Creator is required*
+
 ```git clone https://github.com/CSUF-CPSC254-2017F0102/CryptoView.git```
 
 # Short Term Goals
