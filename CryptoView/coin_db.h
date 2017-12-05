@@ -45,6 +45,8 @@ public:
     // check if DB connection is open
     bool isOpen() const;
 
+    // Execute query
+    bool query(const QString &query);
 
 private:
     QSqlDatabase m_db;

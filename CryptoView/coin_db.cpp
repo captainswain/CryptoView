@@ -43,7 +43,7 @@ bool DbManager::createTable()
 {
 
     QSqlQuery query;
-    query.prepare("CREATE TABLE Coin(id QSTRING(5) PRIMARY KEY NOT NULL, name TEXT, symbol QSTRING(5) NOT NULL UNIQUE, price_usd FLOAT(5) NOT NULL, [24h_volume_usd] FLOAT(5) NOT NULL, market_cap_usd FLOAT(5) NOT NULL, available_supply FLOAT(5) NOT NULL, total_supply FLOAT(5) NOT NULL, percent_change_1h QSTRING(5) NOT NULL, percent_change_24h QSTRING(5) NOT NULL, percent_change_7d QSTRING(5) NOT NULL, last_updated FLOAT(5) NOT NULL);");
+    query.prepare("CREATE TABLE coin (id INTEGER PRIMARY KEY AUTOINCREMENT, symbol varchar(255), open double, close double, high double, low double, time int);");
 
     if (!query.exec())
     {
@@ -61,6 +61,21 @@ bool DbManager::createTable()
 bool DbManager::isOpen() const
 {
     return m_db.isOpen();
+}
+
+bool DbManager::query(const QString &statement)
+{
+    QSqlQuery query(statement);
+
+    if (query.exec())
+    {
+        return true;
+    }
+    else
+    {
+        qDebug() << "query error:  "  << query.lastError();
+        return false;
+    }
 }
 
 /*

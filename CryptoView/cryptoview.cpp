@@ -98,7 +98,7 @@ void CryptoView::formLoad()
     //Check If Db isOpen.
     if (db.isOpen())
     {
-        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+        //db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
     }
     else
     {

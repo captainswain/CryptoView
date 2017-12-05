@@ -15,6 +15,7 @@
 #include <QList>
 #include <QSslError>
 #include <QAbstractSocket>
+#include "coin_db.h"
 
 namespace Ui {
 class CandleStickDialog;
@@ -36,16 +37,21 @@ private slots:
     void onError(QAbstractSocket::SocketError error);
 
 private:
+    void makeChart();
+
+private:
     Ui::CandleStickDialog *ui;
     QCandlestickSeries *m_coinSeries;
     QChart *m_chart;
     QChartView *m_chartView;
     QStringList m_categories;
-    QBarCategoryAxis *axisX;
-    QValueAxis *axisY;
+//    QBarCategoryAxis *axisX;
+//    QValueAxis *axisY;
 
     QString m_symbol;
     QWebSocket *m_webSocket;
+    DbManager *db;
+
 };
 
 #endif // CANDLESTICKDIALOG_H
