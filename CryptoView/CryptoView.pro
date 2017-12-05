@@ -31,7 +31,9 @@ SOURCES += \
         coin_db.cpp \
         socketclient.cpp \
         httpclient.cpp \
-    candlestickdialog.cpp
+    candlestickdialog.cpp \
+    sendtext.cpp \
+    timer.cpp
 
 HEADERS += \
         cryptoview.h \
@@ -39,7 +41,9 @@ HEADERS += \
         coin_db.h \
         socketclient.h \
         httpclient.h \
-    candlestickdialog.h
+    candlestickdialog.h \
+    sendtext.h \
+    timer.h
 
 FORMS += \
         cryptoview.ui \
