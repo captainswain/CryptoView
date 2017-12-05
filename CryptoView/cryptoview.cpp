@@ -67,7 +67,7 @@ void CryptoView::pushCoin(coin& coin){
         break;
     }
 
-    qDebug() << "Rank is: " << rank;
+    //qDebug() << "Rank is: " << rank;
 }
 
 //Helper class to update ui
@@ -116,7 +116,7 @@ void CryptoView::onCoinUpdate(int channelId, CoinData data)
 {
     // Handle coin updates
     //qDebug() << channelId << ":" << price;
-    qDebug() << data.lastPrice << "  " << data.dailyChangePercent;
+    //qDebug() << data.lastPrice << "  " << data.dailyChangePercent;
     QString symbol = channelMap.value(channelId);
     coinMap.value(symbol)->setPrice_usd(data.lastPrice);
     coinMap.value(symbol)->setPercent_change_24h(data.dailyChangePercent);
@@ -151,6 +151,7 @@ void CryptoView::onResponse(QNetworkReply *reply)
         newCoin->setSymbol(json_obj["symbol"].toString());
         newCoin->setRank(json_obj["rank"].toString().toInt());
         coinMap.insert(json_obj["symbol"].toString(), newCoin);
+        coinRankMap.insert(json_obj["rank"].toString().toInt(), json_obj["symbol"].toString());
     }
 
     // Open our websocket connection and pass top coins
@@ -163,10 +164,6 @@ void CryptoView::on_coin1_btn_clicked()
     ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
 
     //call candle stick method
-
-
-
-
 }
 
 void CryptoView::on_candleGoBackBtn_clicked()
@@ -175,14 +172,10 @@ void CryptoView::on_candleGoBackBtn_clicked()
      ui->stackedWidget->setCurrentWidget(ui->homePageWidget);
 }
 
-
-
 void CryptoView::on_coin2_btn_clicked()
 {
     //Show candle stick widget
-    //ui->stackedWidget->setCurrentWidget(ui->candleStickWidget);
-
-    candles = new CandleStickDialog(this);
+    candles = new CandleStickDialog(coinRankMap.value(2), this);
     candles->show();
 }
 

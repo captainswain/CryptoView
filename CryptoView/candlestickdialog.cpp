@@ -1,91 +1,130 @@
 #include "candlestickdialog.h"
 #include "ui_candlestickdialog.h"
-#include <QtCharts>
 
-CandleStickDialog::CandleStickDialog(QWidget *parent) :
+CandleStickDialog::CandleStickDialog(QString symbol, QWidget *parent) :
+    m_symbol(symbol),
     QDialog(parent),
     ui(new Ui::CandleStickDialog)
 {
-
     ui->setupUi(this);
 
-    QStringList categories;
-    QCandlestickSeries *coinSeries = new QCandlestickSeries();
+    m_webSocket = new QWebSocket();
+    connect(m_webSocket, &QWebSocket::connected, this, &CandleStickDialog::onConnected);
+    connect(m_webSocket, &QWebSocket::sslErrors, this, &CandleStickDialog::onSslErrors);
+    connect(m_webSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error), this, &CandleStickDialog::onError);
+    m_webSocket->open(QUrl("wss://api.bitfinex.com/ws/2"));
 
-    //    //Creating set (example)
-    //    QCandlestickSet *coinSet = new QCandlestickSet(timestamp);
-    //    coinSet->setOpen(open);
-    //    coinSet->setClose(close);
-    //    coinSet->setHigh(high);
-    //    coinSet->setLow(low);
-    //
+    m_coinSeries = new QCandlestickSeries(this);
+    m_coinSeries->setName(symbol);
+    m_coinSeries->setIncreasingColor(QColor(Qt::green));
+    m_coinSeries->setDecreasingColor(QColor(Qt::red));
 
-    //    //Push to series
-    //    coinSeries->append(coinSet);
+    m_chart = new QChart();
+    m_chart->addSeries(m_coinSeries);
+    m_chart->setTitle("Coin Name (December 2017)");
+    m_chart->setAnimationOptions(QChart::SeriesAnimations);
+    m_chart->createDefaultAxes();
 
-    //    //Push timestamp to categories
-    //    categories << QDateTime::fromMSecsSinceEpoch(set->timestamp()).toString("dd");
+    axisX = qobject_cast<QBarCategoryAxis *>(m_chart->axes(Qt::Horizontal).at(0));
+    axisX->setCategories(m_categories);
 
-
-    //Creating set (example)
-    QCandlestickSet *coinSet = new QCandlestickSet(1512345600000);
-    coinSet->setOpen(11161);
-    coinSet->setClose(11458);
-    coinSet->setHigh(11600);
-    coinSet->setLow(10718);
-
-    QCandlestickSet *coinSettwo = new QCandlestickSet(1512259200000);
-    coinSettwo->setOpen(10881);
-    coinSettwo->setHigh(11162);
-    coinSettwo->setLow(11874);
-    coinSettwo->setClose(10161);
-
-    QCandlestickSet *coinSetthree = new QCandlestickSet(1512172800000);
-    coinSetthree->setOpen(10861);
-    coinSetthree->setHigh(10880);
-    coinSetthree->setLow(11190);
-    coinSetthree->setClose(10621);
-
-
-    //Push to series
-    coinSeries->append(coinSet);
-    coinSeries->append(coinSettwo);
-    coinSeries->append(coinSetthree);
-
-    //Push timestamp to categories
-    categories << QDateTime::fromMSecsSinceEpoch(1512345600000).toString("dd");
-    categories << QDateTime::fromMSecsSinceEpoch(1512259200000).toString("dd");
-    categories << QDateTime::fromMSecsSinceEpoch(1512172800000).toString("dd");
-
-    coinSeries->setName("Coin Name");
-    coinSeries->setIncreasingColor(QColor(Qt::green));
-    coinSeries->setDecreasingColor(QColor(Qt::red));
-
-    QChart *chart = new QChart();
-    chart->addSeries(coinSeries);
-    chart->setTitle("Coin Name (December 2017)");
-    chart->setAnimationOptions(QChart::SeriesAnimations);
-    chart->createDefaultAxes();
-
-    QBarCategoryAxis *axisX = qobject_cast<QBarCategoryAxis *>(chart->axes(Qt::Horizontal).at(0));
-    axisX->setCategories(categories);
-
-    QValueAxis *axisY = qobject_cast<QValueAxis *>(chart->axes(Qt::Vertical).at(0));
+    axisY = qobject_cast<QValueAxis *>(m_chart->axes(Qt::Vertical).at(0));
     axisY->setMax(axisY->max() * 1.01);
     axisY->setMin(axisY->min() * 0.99);
 
-    chart->legend()->setVisible(true);
-    chart->legend()->setAlignment(Qt::AlignBottom);
+    m_chart->legend()->setVisible(true);
+    m_chart->legend()->setAlignment(Qt::AlignBottom);
 
-    QChartView *chartView = new QChartView(chart);
+    m_chartView = new QChartView(m_chart);
+    m_chartView->setRenderHint(QPainter::Antialiasing);
 
     //Add widget to main layout
-    ui->gridLayout->addWidget(chartView);
+    ui->gridLayout->addWidget(m_chartView);
+}
 
-    chartView->setRenderHint(QPainter::Antialiasing);
+void CandleStickDialog::open(const QUrl &url)
+{
+    m_webSocket->open(QUrl(url));
 }
 
 CandleStickDialog::~CandleStickDialog()
 {
     delete ui;
+}
+
+void CandleStickDialog::onConnected()
+{
+    qDebug() << "WebSocket connected";
+    connect(m_webSocket, &QWebSocket::textMessageReceived, this, &CandleStickDialog::onTextMessageReceived);
+    m_webSocket->sendTextMessage("{\"event\":\"subscribe\",\"channel\":\"candles\",\"key\":\"trade:1h:t" + m_symbol + "USD\"}");
+}
+
+void CandleStickDialog::onTextMessageReceived(QString message)
+{
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(message.toUtf8());
+    if (jsonDoc.isEmpty() || jsonDoc.isNull())
+        return;
+
+    if (jsonDoc.isArray())
+    {
+        QJsonArray arr = jsonDoc.array();
+
+        // Drop heartbeat message
+        if (arr.at(1).toString() == "hb")
+            return;
+
+        QJsonArray data = arr.at(1).toArray();
+
+        if (data.size() > 6)
+        {
+            // We got initial data do some more parsing
+            foreach (const QJsonValue & value, data) {
+                QJsonArray candle = value.toArray();
+
+                qreal timestamp = candle.at(0).toDouble();
+
+                QCandlestickSet *coinSet = new QCandlestickSet(timestamp);
+                coinSet->setOpen(candle.at(1).toDouble());
+                coinSet->setClose(candle.at(2).toDouble());
+                coinSet->setHigh(candle.at(3).toDouble());
+                coinSet->setLow(candle.at(4).toDouble());
+                m_coinSeries->append(coinSet);
+                qDebug() << candle.at(3).toDouble();
+
+                //Push timestamp to categories
+                m_categories << QDateTime::fromMSecsSinceEpoch(timestamp).toString("dd");
+                if (axisY->max() < candle.at(3).toDouble()) axisY->setMax(candle.at(3).toDouble());
+                if (axisY->min() < candle.at(4).toDouble()) axisY->setMin(candle.at(4).toDouble());
+            }
+        }
+        else if (data.size() == 6)
+        {
+            // We got an update for one candle
+        }
+        //qDebug() << "Axis Y: " << m_chart->axes(Qt::Vertical).size();
+        //qDebug() << "Axis Y:" << qobject_cast<QValueAxis *>(m_chart->axes(Qt::Vertical).at(0))->max() * 1.01;
+
+        axisX->categories().clear();
+        axisX->setCategories(m_categories);
+
+        axisY->setMax(qobject_cast<QValueAxis *>(m_chart->axes(Qt::Vertical).at(0))->max() * 1.01);
+        axisY->setMin(qobject_cast<QValueAxis *>(m_chart->axes(Qt::Vertical).at(0))->min() * 0.99);
+    }
+}
+
+void CandleStickDialog::onSslErrors(const QList<QSslError> &errors)
+{
+    Q_UNUSED(errors);
+
+    // WARNING: Never ignore SSL errors in production code.
+    // The proper way to handle self-signed certificates is to add a custom root
+    // to the CA store.
+    // TODO: Handle SSL errors
+
+    m_webSocket->ignoreSslErrors();
+}
+
+void CandleStickDialog::onError(QAbstractSocket::SocketError error)
+{
+    qDebug() << m_webSocket->errorString();
 }

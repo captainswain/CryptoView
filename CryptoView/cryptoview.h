@@ -52,6 +52,7 @@ private:
     SocketClient *socketClient;
     HTTPClient *httpClient;
     QMap<int, QString> channelMap;
+    QMap<int, QString> coinRankMap;
     QMap<QString, coin*> coinMap;
     CandleStickDialog *candles;
 };
