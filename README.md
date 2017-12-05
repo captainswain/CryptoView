@@ -1,4 +1,9 @@
 <p align="center"><img src="https://i.imgur.com/xBOaUcT.png"></p>
+<p align="center">
+<img src="http://forthebadge.com/images/badges/designed-in-ms-paint.svg">
+<img src="http://forthebadge.com/images/badges/uses-git.svg">
+<img src="http://forthebadge.com/images/badges/built-with-love.svg">
+</p>
 
 Displays the top 4 cryptocurrencies in real-time all in a convenient user interface. Track your crypto-purchases and stay on top of the ever changing cryptocurrency landscape.
 
