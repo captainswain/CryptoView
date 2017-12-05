@@ -12,8 +12,8 @@ We want to build a beautiful desktop application to display and provide informat
 
 # Technologies Used
 * Toplist API: https://coinmarketcap.com/api/
-* Realtime API: bitfinex.com
-* QT Creator(free download): https://www.qt.io/download-qt-for-application-development
+* Realtime WebSockets API: https://www.bitfinex.com/
+* QT Creator(free download): https://www.qt.io/download-qt-for-application-development/
 
 # How to Download
 
