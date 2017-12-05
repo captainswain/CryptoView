@@ -6,19 +6,15 @@ Displays the top 4 cryptocurrencies in real-time all in a convenient user interf
 We want to build a beautiful desktop application to display and provide information regarding the pricing and trends of popular cryptocurrencies.
 
 # Technologies Used
-
-Toplist API: https://coinmarketcap.com/api/
-Realtime API: bitfinex.com
+* Toplist API: https://coinmarketcap.com/api/
+* Realtime API: bitfinex.com
 
 # Short Term Goals
-1. Real-time bitcoin pricing
+1. Real-time bitcoin pricing for Bitcoin, Bitcoin Cash, Ethereum, and Ripple.
     * Store: current price, past price, bitcoin type
 
-2. Add your buy in price
-    * Data: buy-in price
-
-3. Show if you have profited or not
-    * Data processing: gains/losses, average change over time (1 hour)
+2. Save past month of data including open high, open low, close high, close low, and time.
+    * Display data on a candlestick chart for easy viewing.
 
 # Long Term Goals
 1. Threshold notifications, if BIT > 5% = notify
@@ -27,6 +23,9 @@ Realtime API: bitfinex.com
 
 2. Show different exchanges real time.
     * Ability to change to different exchanges
+    
+3. Add your buy in price
+    * Data: buy-in price
 
 # Roles
 Jonathon Mouchou - Flex (every role)
