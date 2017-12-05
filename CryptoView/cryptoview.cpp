@@ -38,7 +38,7 @@ CryptoView::~CryptoView()
     delete ui;
 }
 
-
+// Helper function to rank each coin
 void CryptoView::pushCoin(coin& coin){
 
     // Grab rank and set to variable
@@ -101,6 +101,7 @@ void CryptoView::formLoad()
     }
 }
 
+// Updaing coin data
 void CryptoView::onCoinUpdate(int channelId, CoinData data)
 {
     // Handle coin updates
@@ -113,6 +114,8 @@ void CryptoView::onCoinUpdate(int channelId, CoinData data)
     pushCoin(*coinMap.value(symbol));
 }
 
+// When a new coin is added add it to a map
+// channelid -> coin
 void CryptoView::onNewCoin(int channelId, QString pair)
 {
     // Handle new coin
@@ -120,6 +123,8 @@ void CryptoView::onNewCoin(int channelId, QString pair)
     channelMap.insert(channelId, symbol);
 }
 
+// On httprequet data recieved
+// Handle data
 void CryptoView::onResponse(QNetworkReply *reply)
 {
     // Read all data from the reply
@@ -152,7 +157,6 @@ void CryptoView::on_coin1_btn_clicked()
     //Show candle stick widget
     candles = new CandleStickDialog(coinRankMap.value(1), this);
     candles->show();
-
 }
 
 

@@ -13,12 +13,14 @@ SocketClient::SocketClient(QObject *parent) : QObject(parent)
     //connect(&m_webSocket, &QWebSocket::disconnected, this, &WebClient::onDisconnected);
 }
 
+// On socket open
 void SocketClient::open(const QUrl &url, QList<QString> symbols)
 {
     m_symbols = symbols;
     m_webSocket.open(QUrl(url));
 }
 
+// On socket connected
 void SocketClient::onConnected()
 {
     qDebug() << "WebSocket connected";
@@ -29,6 +31,7 @@ void SocketClient::onConnected()
         m_webSocket.sendTextMessage("{\"channel\":\"ticker\",\"event\":\"subscribe\",\"symbol\":\"t" + m_symbols.at(i).toUpper() + "USD\"}");
 }
 
+// WebSocket on data receieved
 void SocketClient::onTextMessageReceived(QString message)
 {
     QJsonDocument jsonDoc = QJsonDocument::fromJson(message.toUtf8());
@@ -37,6 +40,7 @@ void SocketClient::onTextMessageReceived(QString message)
 
     if (jsonDoc.isObject())
     {
+        // JSON data is an object
         QJsonObject obj = jsonDoc.object();
         if (obj.value("event").toString() == "subscribed")
         {
@@ -46,6 +50,7 @@ void SocketClient::onTextMessageReceived(QString message)
     }
     else if (jsonDoc.isArray())
     {
+        // JSON data is an array
         QJsonArray arr = jsonDoc.array();
 
         // Drop heartbeat message
@@ -55,6 +60,7 @@ void SocketClient::onTextMessageReceived(QString message)
         // Emit coin data on ticker update
         QJsonArray selected = arr.at(1).toArray();
 
+        // Build a coin
         CoinData tempCoin;
         tempCoin.bid = selected.at(0).toInt();
         tempCoin.bidSize = selected.at(1).toDouble();
@@ -71,6 +77,7 @@ void SocketClient::onTextMessageReceived(QString message)
     }
 }
 
+// On any type of ssl errors
 void SocketClient::onSslErrors(const QList<QSslError> &errors)
 {
     Q_UNUSED(errors);
@@ -83,6 +90,7 @@ void SocketClient::onSslErrors(const QList<QSslError> &errors)
     m_webSocket.ignoreSslErrors();
 }
 
+// On any type of error that may happen with the socket
 void SocketClient::onError(QAbstractSocket::SocketError error)
 {
     qDebug() << m_webSocket.errorString();
