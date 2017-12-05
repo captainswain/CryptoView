@@ -31,15 +31,11 @@ public:
     ~CryptoView();
 
 private slots:
-    void on_addCurrencyBtn_clicked();
-    void on_goBackBtn_clicked();
     void onCoinUpdate(int channelId, CoinData data);
     void onNewCoin(int channelId, QString pair);
     void onResponse(QNetworkReply *reply);
 
     void on_coin1_btn_clicked();
-
-    void on_candleGoBackBtn_clicked();
 
     void on_coin2_btn_clicked();
 
