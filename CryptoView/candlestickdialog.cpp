@@ -8,6 +8,8 @@ CandleStickDialog::CandleStickDialog(QString symbol, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle(symbol);
+\
     db = new DbManager("coins.db");
     db->createTable();
 
